@@ -93,7 +93,7 @@ function setupSocket(socket){
 }
 let socket
 $(function(){
-  socket = io.connect('http://localhost:3000');
+  socket = io.connect('https://vps774810.ovh.net:3000');
   setupSocket(socket)
 
   $("#username1_btn").click(onConnect)

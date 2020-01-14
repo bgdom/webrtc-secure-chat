@@ -1,12 +1,19 @@
 const express = require('express')
-const http = require('http')
+const https = require('https');
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
+
 const app = express()
 
 app.use('/', express.static('public', {
     maxAge: 0
 }));
 
-const server = http.createServer(app)
+const server = https.createServer(options, app)
 
 const io = require('socket.io').listen(server)
 const sockets = []
@@ -86,7 +93,7 @@ io.sockets.on('connection', function(socket){
     const friend = mapSocketFriend[socket.username]
     if(friend.hasAnswer) return
     friend.hasAnswer = true
-    
+
     friend.emit('answer', {answer: answer})
   })
 })
