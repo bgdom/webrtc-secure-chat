@@ -1,6 +1,7 @@
 const URL = "http://localhost:3000"
 let chat
-new WOW().init();
+let usernameGlobal
+
 function handleChannelStatusChange(event){
   console.log(event);
 }
@@ -88,6 +89,22 @@ function setupSocket(socket){
   })
 }
 
+let intervalId = undefined
+async function refreshUserList(){
+  const begDate = Date.now()
+  let users = await getConnectedUsers()
+  users = users.filter(user => user !== usernameGlobal)
+  
+  let delay = begDate - Date.now()
+  delay = delay < 3000 ? 3000 - delay : 0
+
+  const lus = $("#list-users-lu")
+  lus.empty()
+  lus.append(users.map(user => $("<li></li>").append($("<a href=\"session.html\" target=\"_blank\"></a>").text(user))))
+
+  setTimeout(refreshUserList, delay)
+}
+
 function getConnectedUsers(){
   return $.get(URL+"/listConnectedUsers")
 }
@@ -107,10 +124,12 @@ $(function(){
   $("#username1_btn").click(tryConnection)
   $("#get-session-btn").click(tryStartingSession)
   $("#send_btn").click(sendMessage)
+
+  refreshUserList()
 })
 
 function tryConnection(){
   const RSAkey = cryptico.generateRSAKey("", 2048);
   const PublicKeyString = cryptico.publicKeyString(RSAkey);
-  socket.emit('connect_request', {username: $("#username1").val(), "pub_key": PublicKeyString})
+  socket.emit('connect_request', {username: usernameGlobal = $("#username1").val(), "pub_key": PublicKeyString})
 }
