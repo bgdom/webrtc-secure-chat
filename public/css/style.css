@@ -70,8 +70,8 @@ html,body{
 }
 
 .block-inputs {
-  background-color: white;
   padding-top: 40px;
+  text-align: center;
 
 }
 
@@ -83,10 +83,6 @@ html,body{
 
 .block-inputs input {
   margin-bottom: 30px;
-}
-
-.input-group {
-
 }
 
 
