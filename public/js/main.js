@@ -97,11 +97,18 @@ function getConnectedUsers(){
   return $.get(URL+"/listConnectedUsers")
 }
 
+// function openSession(){
+//   onConnect()
+//   tryConnection()
+// }
+
 let socket
 $(function(){
   socket = io.connect(URL);
   setupSocket(socket)
 
+  // nouvel id: session_btn a la place de username1_btn et username2_btn
+  
   $("#username1_btn").click(onConnect)
   $("#username2_btn").click(tryConnection)
   $("#msg_btn").click(sendMessage)
