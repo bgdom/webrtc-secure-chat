@@ -1,6 +1,6 @@
 const URL = "http://localhost:3000"
 let chat
-
+new WOW().init();
 function handleChannelStatusChange(event){
   console.log(event);
 }

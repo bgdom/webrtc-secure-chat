@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" media="screen" href="css/style.css">
+  <link rel="stylesheet" media="screen" href="css/animate.css">
   <link rel="icon" href="favicon.ico" />
   <script type="text/javascript" src="js/crypto/cryptico.min.js"></script>
 </head>
@@ -17,28 +18,52 @@
   <div id="particles-js"></div>
 
 
-  <section class="intro">
+  <section class="intro wow bounceIn">
     <div class="logo">
       <img src="./img/wifi.svg" height="40px" />
       <h1>Radio</h1>
     </div>
 
+    <h2>Veuillez entrer un pseudo valide</h2>
+
+
     <div class="block-inputs">
 
 
-        <input type="text" id="username1" class="form-control" id="formGroupExampleInput" placeholder="Pseudo">
-        <!-- <button type="button" id="username1_btn" class="btn btn-primary btn-form">Connexion</button> -->
-        <button class="btn btn-form" id="username1_btn" href="session.html">Se connecter</button>
+      <input type="text" id="username1" class="form-control" id="formGroupExampleInput" placeholder="Pseudo">
+      <!-- <button type="button" id="username1_btn" class="btn btn-primary btn-form">Connexion</button> -->
+      <button class="btn btn-form" id="username1_btn" href="session.html">Se connecter</button>
 
 
-        <input type="text" id="username2" class="form-control" id="formGroupExampleInput" placeholder="Destinataire">
-        <button class="btn btn-form" id="get-session-btn" href="session.html" target="_blank">Démarrer une session</button>
-      </div>
+      <!-- <h2>Utilisateurs connectés</h2> -->
 
-      <!-- <input type="text" placeholder="Message" id="msg" /><button id="msg_btn">envoyer</button> -->
+      <!-- <input type="text" id="username2" class="form-control" id="formGroupExampleInput" placeholder="Destinataire">
+        <button class="btn btn-form" id="get-session-btn" href="session.html" target="_blank">Démarrer une session</button> -->
+    </div>
+
     </div>
 
   </section>
+
+  <section class="users">
+    <div class="logo">
+      <img src="./img/wifi.svg" height="40px" />
+      <h1>Radio</h1>
+    </div>
+
+    <h2>Utilisateurs connectés</h2>
+
+    <div class="list-users">
+      <ul>
+        <li><a href="session.html">Mus</a></li>
+        <li><a>Dom</a></li>
+        <li><a>Bite</a></li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- </section>
 
   <section class="session">
     <div class="logo">
@@ -58,10 +83,9 @@
         <button type="button" id="send_btn" class="btn btn-primary btn-form">Envoyer</button>
     </div>
 
-    <!-- <input type="text" placeholder="Message" id="msg" /><button id="msg_btn">envoyer</button> -->
     </div>
 
-</section>
+</section> -->
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
