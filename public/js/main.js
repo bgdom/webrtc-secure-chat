@@ -1,4 +1,4 @@
-const URL = "https://webrtcepita.ddns.net:3000"
+const URL = "http://localhost:3000"
 let chat
 
 function onConnect(){

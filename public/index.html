@@ -3,29 +3,43 @@
 
 <head>
 
-  <title>Realtime communication with WebRTC</title>
+  <title>Radio</title>
 
-  <link rel="stylesheet" href="main.css" />
-
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="screen" href="css/style.css">
 </head>
 
 <body>
+  <div id="particles-js"></div>
 
-  <h1>Realtime communication with WebRTC</h1>
 
-  <div><input type="text" id="username1"/><button id="username1_btn">connecter</button></div>
-  <div><input type="text" id="username2" /><button id="username2_btn">parler à</button></div>
-  <div><input type="text" id="msg" /><button id="msg_btn">envoyer</button></div>
+  <section class="intro">
+    <div class="logo">
+      <img src="./img/wifi.svg" height="30px"/>
+      <h1>Radio</h1>
+    </div>
 
+    <div class="block-inputs">
+      <input type="text" id="username1" /><button id="username1_btn">connecter</button>
+      <input type="text" id="username2" /><button id="username2_btn">parler à</button>
+      <input type="text" id="msg" /><button id="msg_btn">envoyer</button>
+    </div>
+  
+  </section>
 
   <div id="text_area">
     
   </div>
 
+  
+
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="main.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+
 
 </body>
 
