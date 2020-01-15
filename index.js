@@ -1,11 +1,22 @@
 const express = require('express')
-const https = require('https');
+let httpMaybeS
+let options = {}
 const fs = require('fs');
 
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+try{
+  if(fs.existsSync('key.pem') && fs.existsSync('cert.pem')){
+
+    httpMaybeS = require('https');
+
+    options = {
+      key: fs.readFileSync('key.pem'),
+      cert: fs.readFileSync('cert.pem')
+    };
+
+  } else throw "back to http"
+}catch(err){
+  httpMaybeS = require('http');
+}
 
 const app = express()
 
@@ -13,7 +24,7 @@ app.use('/', express.static('public', {
     maxAge: 0
 }));
 
-const server = https.createServer(options, app)
+const server = httpMaybeS.createServer(options, app)
 
 const io = require('socket.io').listen(server)
 const sockets = []
