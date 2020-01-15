@@ -106,6 +106,7 @@ $(function(){
   
   $("#username1_btn").click(tryConnection)
   $("#get-session-btn").click(tryStartingSession)
+  $("#send_btn").click(sendMessage)
 })
 
 function tryConnection(){
