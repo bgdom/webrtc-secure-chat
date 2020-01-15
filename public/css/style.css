@@ -100,7 +100,7 @@ html,body{
 }
 
 .session {
-  visibility: hidden;
+
   background-color: white;
   padding: 30px;
   margin: auto;
@@ -113,7 +113,8 @@ html,body{
 
 .text-area-block {
   display: flex;
-  background-color: grey;
+  border-radius: 5px;
+  background-color: rgb(236, 233, 233);
   height: 300px;
   margin-bottom: 30px;
 }
@@ -154,10 +155,12 @@ html,body{
   background-color: rgb(29, 202, 29);
   padding: 5px;
   border-radius: 10px;
+  color: white;
+  text-decoration: none;
 }
 
 .list-users li {
   padding: 5px;
   margin: 10px;
-  color: white;
+
 }
