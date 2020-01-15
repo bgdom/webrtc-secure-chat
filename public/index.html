@@ -6,6 +6,8 @@
   <title>Radio</title>
 
   <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" media="screen" href="css/style.css">
 </head>
 
@@ -15,24 +17,37 @@
 
   <section class="intro">
     <div class="logo">
-      <img src="./img/wifi.svg" height="30px"/>
+      <img src="./img/wifi.svg" height="30px" />
       <h1>Radio</h1>
     </div>
 
     <div class="block-inputs">
-      <input type="text" id="username1" /><button id="username1_btn">connecter</button>
-      <input type="text" id="username2" /><button id="username2_btn">parler à</button>
-      <input type="text" id="msg" /><button id="msg_btn">envoyer</button>
+
+
+        <input type="text" id="username1" class="form-control" id="formGroupExampleInput" placeholder="Pseudo">
+        <!-- <button type="button" id="username1_btn" class="btn btn-primary btn-form">Connexion</button> -->
+
+
+        <input type="text" id="username2_btn" class="form-control" id="formGroupExampleInput" placeholder="Destinataire">
+        <button type="button" id="username2_btn" class="btn btn-primary btn-form">Démarrer une session</button>
+      </div>
+
+      <!-- <input type="text" placeholder="Message" id="msg" /><button id="msg_btn">envoyer</button> -->
     </div>
-  
+
   </section>
 
   <div id="text_area">
-    
+
   </div>
 
-  
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
