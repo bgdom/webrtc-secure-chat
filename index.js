@@ -20,6 +20,13 @@ try{
 
 const app = express()
 
+const sockets = []
+const mapSocketFriend = {}
+
+app.get('/listConnectedUsers', function(req, res){
+  res.send(sockets.filter(s => s.username).map(s => s.username))
+});
+
 app.use('/', express.static('public', {
     maxAge: 0
 }));
@@ -27,8 +34,6 @@ app.use('/', express.static('public', {
 const server = httpMaybeS.createServer(options, app)
 
 const io = require('socket.io').listen(server)
-const sockets = []
-const mapSocketFriend = {}
 
 io.sockets.on('connection', function(socket){
   console.log('user connected');

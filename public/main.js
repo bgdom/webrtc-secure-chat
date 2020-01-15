@@ -1,3 +1,4 @@
+const URL = "https://webrtcepita.ddns.net:3000"
 let chat
 
 function onConnect(){
@@ -91,9 +92,14 @@ function setupSocket(socket){
     setupConnection(data.role)
   })
 }
+
+function getConnectedUsers(){
+  return $.get(URL+"/listConnectedUsers")
+}
+
 let socket
 $(function(){
-  socket = io.connect('https://webrtcepita.ddns.net:3000');
+  socket = io.connect(URL);
   setupSocket(socket)
 
   $("#username1_btn").click(onConnect)
