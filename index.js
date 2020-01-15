@@ -27,6 +27,10 @@ app.get('/listConnectedUsers', function(req, res){
   res.send(sockets.filter(s => s.username).map(s => s.username))
 });
 
+app.get('/checkIdentity', function(req, res){
+  
+});
+
 app.use('/', express.static('public', {
     maxAge: 0
 }));
@@ -55,8 +59,7 @@ io.sockets.on('connection', function(socket){
   socket.on('connect_request', function(data){
     console.log("connection request ");
     
-    const { username, pub_key  } = data
-    console.log(pub_key);
+    const { username, pub_key } = data
     
     const res = sockets.filter(s => s.username && s.username === username)
     // if user already has username -> error
@@ -65,6 +68,7 @@ io.sockets.on('connection', function(socket){
     // if username doesn't exist, connect 
     else if(res.length === 0){
       socket.username = username
+      socket.pub_key = pub_key
       socket.emit('connect_request', {status: 'success'})
     }
     // if username already exists -> error
