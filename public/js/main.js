@@ -1,12 +1,6 @@
 const URL = "http://localhost:3000"
 let chat
 
-function onConnect(){
-  const RSAkey = cryptico.generateRSAKey("", 2048);
-  const PublicKeyString = cryptico.publicKeyString(RSAkey);       
-  socket.emit('connect_request', {username: $("#username1").val(), "pub_key": PublicKeyString})
-}
-
 function handleChannelStatusChange(event){
   console.log(event);
 }
@@ -72,15 +66,13 @@ function setupConnection(role){
   }
 }
 
-function tryConnection(){
+function tryStartingSession(){
   socket.emit('talk', {username: $("#username2").val()})
 }
 
 function setupSocket(socket){
   socket.on('connect_request', function(data){
-    if(data.status === "success")
-      alert('Successfuly connected')
-    else      
+    if(data.status !== "success")
       alert('Error while connecting: '+ data.details)
   })
 
@@ -92,6 +84,7 @@ function setupSocket(socket){
     } 
 
     setupConnection(data.role)
+    switchToSession()
   })
 }
 
@@ -111,7 +104,12 @@ $(function(){
 
   // nouvel id: session_btn a la place de username1_btn et username2_btn
   
-  $("#username1_btn").click(onConnect)
-  $("#username2_btn").click(tryConnection)
-  $("#msg_btn").click(sendMessage)
+  $("#username1_btn").click(tryConnection)
+  $("#get-session-btn").click(tryStartingSession)
 })
+
+function tryConnection(){
+  const RSAkey = cryptico.generateRSAKey("", 2048);
+  const PublicKeyString = cryptico.publicKeyString(RSAkey);
+  socket.emit('connect_request', {username: $("#username1").val(), "pub_key": PublicKeyString})
+}
