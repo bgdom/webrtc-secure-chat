@@ -3,8 +3,8 @@
 
     $('#get-session-btn').click(function () {
         console.log("test")
-        $('.intro').css('visibility', 'hidden')
-        $('.session').css('visibility', 'visible')
+        $('.intro').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
+        // $('.session').css('visibility', 'visible')
     })
 
 
