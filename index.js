@@ -55,7 +55,9 @@ io.sockets.on('connection', function(socket){
   socket.on('connect_request', function(data){
     console.log("connection request ");
     
-    const { username } = data
+    const { username, pub_key  } = data
+    console.log(pub_key);
+    
     const res = sockets.filter(s => s.username && s.username === username)
     // if user already has username -> error
     if(socket.username)

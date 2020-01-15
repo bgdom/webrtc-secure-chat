@@ -2,7 +2,9 @@ const URL = "http://localhost:3000"
 let chat
 
 function onConnect(){
-  socket.emit('connect_request', {username: $("#username1").val()})
+  const RSAkey = cryptico.generateRSAKey("", 2048);
+  const PublicKeyString = cryptico.publicKeyString(RSAkey);       
+  socket.emit('connect_request', {username: $("#username1").val(), "pub_key": PublicKeyString})
 }
 
 function handleChannelStatusChange(event){
