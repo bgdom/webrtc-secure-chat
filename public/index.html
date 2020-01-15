@@ -28,16 +28,40 @@
 
         <input type="text" id="username1" class="form-control" id="formGroupExampleInput" placeholder="Pseudo">
         <!-- <button type="button" id="username1_btn" class="btn btn-primary btn-form">Connexion</button> -->
+        <button class="btn btn-form" id="username1_btn" href="session.html">Se connecter</button>
 
 
         <input type="text" id="username2" class="form-control" id="formGroupExampleInput" placeholder="Destinataire">
-        <a class="btn btn-form" href="session.html" target="_blank">Démarrer une session</a href="./session.html">
+        <button class="btn btn-form" id="get-session-btn" href="session.html" target="_blank">Démarrer une session</button>
       </div>
 
       <!-- <input type="text" placeholder="Message" id="msg" /><button id="msg_btn">envoyer</button> -->
     </div>
 
   </section>
+
+  <section class="session">
+    <div class="logo">
+        <h1>SESSION</h1>
+    </div>
+
+
+
+    <div class="text-area-block">
+        <div id="text_area"></div>
+    </div>
+    
+
+
+    <div class="message-block">
+        <input type="text" id="msg" class="form-control" id="formGroupExampleInput" placeholder="Message">
+        <button type="button" id="session_btn" class="btn btn-primary btn-form">Envoyer</button>
+    </div>
+
+    <!-- <input type="text" placeholder="Message" id="msg" /><button id="msg_btn">envoyer</button> -->
+    </div>
+
+</section>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -52,6 +76,7 @@
   <script src="js/main.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/session.js"></script>
 
 
 </body>

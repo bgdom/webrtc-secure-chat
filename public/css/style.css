@@ -81,8 +81,9 @@ html,body{
   align-self: center;
 }
 
-.block-inputs a {
+.block-inputs a, button {
   color: white !important;
+  margin-bottom: 20px;
 }
 
 .block-inputs input {
@@ -90,6 +91,7 @@ html,body{
 }
 
 .session {
+  visibility: hidden;
   background-color: white;
   padding: 30px;
   margin: auto;
