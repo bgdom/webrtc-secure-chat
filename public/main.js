@@ -10,7 +10,7 @@ function handleChannelStatusChange(event){
 }
 
 function onMessageReceived(data){
-  $("#text_area").append("<p>"+data+"</p>")
+  $("#text_area").append($("<p></p>").text(data))
 }
 function sendMessage(){
   const data = $("#msg").val()
