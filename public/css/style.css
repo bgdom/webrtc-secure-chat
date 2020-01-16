@@ -100,7 +100,7 @@ html,body{
 }
 
 .session {
-
+  visibility: hidden;
   background-color: white;
   padding: 30px;
   margin: auto;
