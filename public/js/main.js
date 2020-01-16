@@ -4,6 +4,7 @@ let usernameGlobal
 
 function handleChannelStatusChange(event){
   console.log(event);
+  switchToSession()
 }
 
 function onMessageReceived(data){
@@ -32,6 +33,7 @@ function setupConnection(role){
       urls: ['stun:stun.voipplanet.nl:3478']
     }
   ]};
+
   const connection = new RTCPeerConnection(configuration);
   connection.onicecandidate = (event) => {
     event.candidate && 
@@ -67,14 +69,16 @@ function setupConnection(role){
   }
 }
 
-function tryStartingSession(){
-  socket.emit('talk', {username: $("#username2").val()})
+function tryStartingSession(user){
+  socket.emit('talk', {username: user})
 }
 
 function setupSocket(socket){
   socket.on('connect_request', function(data){
     if(data.status !== "success")
       alert('Error while connecting: '+ data.details)
+    else
+      socket.username = data.username
   })
 
   socket.on('talk', function(data) {
@@ -85,7 +89,6 @@ function setupSocket(socket){
     } 
 
     setupConnection(data.role)
-    switchToSession()
   })
 }
 
@@ -100,7 +103,17 @@ async function refreshUserList(){
 
   const lus = $("#list-users-lu")
   lus.empty()
-  lus.append(users.map(user => $("<li></li>").append($("<a href=\"session.html\" target=\"_blank\"></a>").text(user))))
+
+  const tab = []
+  for(user of users){
+    const line = $("<li></li>")
+    line.text(user)
+    line.click(() => tryStartingSession(user))
+
+    tab.push(line)
+  }
+
+  lus.append(tab)
 
   setTimeout(refreshUserList, delay)
 }
@@ -122,6 +135,11 @@ $(function(){
   // nouvel id: session_btn a la place de username1_btn et username2_btn
   
   $("#username1_btn").click(tryConnection)
+  $('#username1_btn').click(function() {
+    // $('.intro').addClass('wow bounceOut')
+    $('.intro').css('visibility', 'hidden')
+    $('.users').css('visibility', 'visible')
+})
   $("#get-session-btn").click(tryStartingSession)
   $("#send_btn").click(sendMessage)
 
@@ -129,7 +147,5 @@ $(function(){
 })
 
 function tryConnection(){
-  const RSAkey = cryptico.generateRSAKey("", 2048);
-  const PublicKeyString = cryptico.publicKeyString(RSAkey);
-  socket.emit('connect_request', {username: usernameGlobal = $("#username1").val(), "pub_key": PublicKeyString})
+  socket.emit('connect_request', {username: usernameGlobal = $("#username1").val()})
 }
