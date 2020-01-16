@@ -107,7 +107,8 @@ async function refreshUserList(){
   const tab = []
   for(user of users){
     const line = $("<li></li>")
-    line.text(user)
+    const alink = $("<a></a>").text(user)
+    line.append(alink)
     line.click(() => tryStartingSession(user))
 
     tab.push(line)

@@ -164,3 +164,16 @@ html,body{
   margin: 10px;
 
 }
+
+#text_area {
+  width: 100%;
+  padding: 30px;
+  overflow-y: scroll;
+}
+
+#text_area p {
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+}
