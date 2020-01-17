@@ -40,11 +40,9 @@ const server = httpMaybeS.createServer(options, app)
 const io = require('socket.io').listen(server)
 
 io.sockets.on('connection', function(socket){
-  console.log('user connected');
   sockets.push(socket)
 
   socket.on('disconnect', function() {
-    console.log('user disconnected');
 
     const i = sockets.indexOf(socket);
     sockets.splice(i, 1);
@@ -57,7 +55,6 @@ io.sockets.on('connection', function(socket){
 
   // handle connection (identification request)
   socket.on('connect_request', function(data){
-    console.log("connection request ");
     
     const { username } = data
     
@@ -105,7 +102,6 @@ io.sockets.on('connection', function(socket){
     if(friend.hasOffer) return
     friend.hasOffer = true
 
-    console.log(offer)
     friend.emit('offer', {offer: offer})
   })
 
@@ -120,5 +116,5 @@ io.sockets.on('connection', function(socket){
 })
 
 server.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('App listening on port 3000!')
 })
