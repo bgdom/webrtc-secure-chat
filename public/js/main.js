@@ -3,7 +3,6 @@ let chat
 let usernameGlobal
 
 function handleChannelStatusChange(event){
-  console.log(event);
   switchToSession()
 }
 
